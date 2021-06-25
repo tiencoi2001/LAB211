@@ -62,7 +62,7 @@ public class DataInput {
         }
     }
 
-    public int inputNewID(List<Product> products) {
+    public int inputID() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Product ID: ");
         // loop until have valid choice were inputted
@@ -71,12 +71,7 @@ public class DataInput {
             if (!raw.isEmpty()) { // not empty ~> check next condition
                 try {
                     int id = Integer.parseInt(raw);
-                    if (!isDuplicatedID(id, products)) {
-                        return id;
-                    } else {
-                        System.out.print("ID is already in use "
-                                + " please enter another ID: ");
-                    }
+                    return id;
                 } catch (NumberFormatException e) {
                     System.out.print("ID must be an integer, enter again: ");
                 }
@@ -116,9 +111,8 @@ public class DataInput {
         // loop until have valid name were inputted
         while (true) {
             String string = scanner.nextLine().trim();
-            upperCaseFirstChar(string);
             if (!string.isEmpty()) { // not empty ~> finish;
-                return string;
+                return upperCaseFirstChar(string);
             } else { // empty string ~> display error & re-enter
                 System.out.print(name + " can not empty, enter again: ");
             }
@@ -292,10 +286,9 @@ public class DataInput {
         }
     }
 
-    public boolean checkYesNo() {
+    public boolean checkYesNo(String notification) {
         Scanner in = new Scanner(System.in);
-        System.out.println("Press \"Y\" if you want to keep taking action,"
-                + " press \"N\" if you want to end the action.");
+        System.out.println(notification);
         System.out.print("Enter your choice: ");
         while (true) {
             String s = in.nextLine();

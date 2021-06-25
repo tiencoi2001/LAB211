@@ -22,10 +22,12 @@ public class Main {
     public static void main(String[] args) {
         Main m = new Main();
         DataInput in = new DataInput();
-        ProductManagement manager = new ProductManagement();
 
         List<Storekeeper> storekeepers = new ArrayList<>();
         List<Product> products = new ArrayList<>();
+        
+        ProductManagement manager = new ProductManagement(storekeepers, products);
+        View v = new View(manager);
 
         storekeepers.add(new Storekeeper(1, "abc"));
         storekeepers.add(new Storekeeper(2, "a"));
@@ -43,23 +45,23 @@ public class Main {
 
             switch (choice) {
                 case 1: {
-                    manager.addStorekeeper(storekeepers);
+                    v.addStorekeeper();
                     break;
                 }
                 case 2: {
-                    manager.addProduct(products, storekeepers);
+                    v.addProduct();
                     break;
                 }
                 case 3: {
-                    manager.updateProduct(products, storekeepers);
+                    v.updateProduct();
                     break;
                 }
                 case 4: {
-                    manager.searchProduct(products, storekeepers);
+                    v.searchProduct();
                     break;
                 }
                 case 5: {
-                    manager.sortProduct(products, storekeepers);
+                    v.sortProduct();
                     break;
                 }
                 case 0: {

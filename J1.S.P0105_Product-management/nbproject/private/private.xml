@@ -5,6 +5,11 @@
         <group name="LAB211">
             <file>file:/C:/Users/tien/Documents/NetBeansProjects/LAB211/J1.S.P0105_Product-management/src/DataInput.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/tien/Documents/NetBeansProjects/J1.S.P0105_Product-management/src/DataInput.java</file>
+            <file>file:/C:/Users/tien/Documents/NetBeansProjects/J1.S.P0105_Product-management/src/Main.java</file>
+            <file>file:/C:/Users/tien/Documents/NetBeansProjects/J1.S.P0105_Product-management/src/ProductManagement.java</file>
+            <file>file:/C:/Users/tien/Documents/NetBeansProjects/J1.S.P0105_Product-management/src/View.java</file>
+        </group>
     </open-files>
 </project-private>
