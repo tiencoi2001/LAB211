@@ -3,8 +3,11 @@ import entity.Task;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeSet;
+import entity.ID;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,11 +26,12 @@ public class TaskManagement {
         this.taskList = task;
     }
 
+    private ArrayList<ID> listID = new ArrayList<>();
+
     public Task inputTask() {
         DataInput in = new DataInput();
 
-//        int id = taskList.size() + 1;
-        int id = taskList.get(taskList.size() - 1).getId() + 1;
+        int id = ID();
         String requirementName = in.inputString("Requirement Name");
         String taskType = in.getType();
         Date date = in.inputDate();
@@ -40,12 +44,40 @@ public class TaskManagement {
         return t;
     }
 
+    public int ID() {
+        if (taskList.isEmpty()) {
+            listID.add(new ID(1));
+            return 1;
+        }
+        loadId();
+        listID.add(new ID(listID.get(listID.size() - 1).getId() + 1));
+        return listID.get(listID.size() - 1).getId();
+    }
+
+    public List loadId() {
+        if (!taskList.isEmpty() && listID.isEmpty()) {
+            for (int i = 0; i < taskList.size(); i++) {
+                listID.add(new ID(taskList.get(i).getId()));
+            }
+        }
+        return listID;
+    }
+
+    public List removeId() {
+        loadId();
+        for (int i = 0; i < listID.size() - 1; i++) {
+            listID.remove(i);
+            i--;
+        }
+        return listID;
+    }
+
     public List<Task> addTask(Task task) {
         taskList.add(task);
         return taskList;
     }
 
-    public List<Task> deleteTask(int id) {        
+    public List<Task> deleteTask(int id) {
         for (int i = 0; i < taskList.size(); i++) {
             if (taskList.get(i).getId() == id) {
                 taskList.remove(i);
@@ -60,7 +92,6 @@ public class TaskManagement {
 //        }
 //        return taskList;
 //    }
-
     public void display(List<Task> list) {
         System.out.printf("%-3s | %-15s | %-10s | %-10s | %-5s | %-8s | %-7s\n",
                 "ID", "Name", "Task Type", "Date", "Time", "Assignee", "Reviewer");
