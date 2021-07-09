@@ -33,7 +33,7 @@ public class View {
             System.out.println("Add storekeeper successful.");
             System.out.println("");
             System.out.println("LIST STOREKEEPERS");
-            pm.displayStorekeepers();
+            displayStorekeepers();
             System.out.println("");
             if (!in.checkYesNo("Press \"Y\" if you want to keep taking action,"
                     + " press \"N\" if you want to end the action.")) {
@@ -63,6 +63,12 @@ public class View {
         return s;
     }
 
+    public void displayStorekeepers() {
+        for (Storekeeper s : pm.getStorekeepers()) {
+            System.out.println(s.getId() + " - " + s.getName());
+        }
+    }
+
     public void addProduct() {
         if (pm.checkListStorekeeper()) {
             System.out.println("Please enter the storekeeper first.");
@@ -72,12 +78,11 @@ public class View {
         DataInput in = new DataInput();
         while (true) {
             Product p = inputProduct();
-            pm.addProduct(p);
-
+            ArrayList<Product> products = (ArrayList<Product>) pm.addProduct(p);
             System.out.println("Add product successful.");
             System.out.println("");
             System.out.println("LIST PRODUCTS");
-            pm.displayAll();
+            displayAll();
             System.out.println("");
             if (!in.checkYesNo("Press \"Y\" if you want to keep taking action,"
                     + " press \"N\" if you want to end the action.")) {
@@ -89,6 +94,19 @@ public class View {
         System.out.println("");
         System.out.println("Add all product successful.");
         System.out.println("");
+    }
+
+    public void displayAll() {
+        System.out.printf("%5s %10s %10s %10s %15s %25s %15s %15s %15s\n", "ID", "Name",
+                "Location", "Price", "Expiry date", "Date of manufacture",
+                "Category", "Storekeeper", "Receipt date");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        for (Product p : pm.getProducts()) {
+            System.out.printf("%5s %10s %10s %10s %15s %25s %15s %15s %15s\n",
+                    p.getId(), p.getName(), p.getLocation(), p.getPrice(),
+                    sdf.format(p.getExpiryDate()), sdf.format(p.getDateOfManufacture()), p.getCategory(),
+                    p.getStorekeeper().getName(), sdf.format(p.getReceiptDate()));
+        }
     }
 
     public Product inputProduct() {
@@ -112,7 +130,7 @@ public class View {
         Date dateOfManufacture = in.inputManufactureDate(expiryDate);
         String category = in.inputString("Category");
         System.out.println("Choose storekeeper [1-" + pm.getLastID() + "]");
-        pm.displayStorekeepers();
+        displayStorekeepers();
         System.out.print("Your choice: ");
         int sid = in.inputChoice(1, pm.getLastID());
         Storekeeper s = new Storekeeper(pm.getStorekeeperByID(id).getId(), pm.getStorekeeperByID(id).getName());
@@ -173,7 +191,7 @@ public class View {
                 }
                 if (in.checkYesNo("Do you want update storekeeper")) {
                     System.out.println("Choose storekeeper [1-" + pm.getLastID() + "]");
-                    pm.displayStorekeepers();
+                    displayStorekeepers();
                     System.out.print("Your choice: ");
                     int sid = in.inputChoice(1, pm.getLastID());
                     Storekeeper s = new Storekeeper(pm.getStorekeeperByID(id).getId(), pm.getStorekeeperByID(id).getName());
@@ -188,7 +206,7 @@ public class View {
             System.out.println("Update product successful.");
             System.out.println("");
             System.out.println("LIST PRODUCTS");
-            pm.displayAll();
+            displayAll();
             System.out.println("");
             if (!in.checkYesNo("Press \"Y\" if you want to keep taking action,"
                     + " press \"N\" if you want to end the action.")) {
@@ -229,7 +247,7 @@ public class View {
                     "Category", "Storekeeper", "Receipt date");
 
             for (Product p : searched) {
-                pm.displayProduct(p);
+                displayProduct(p);
             }
             System.out.println("");
             if (!in.checkYesNo("Press \"Y\" if you want to keep taking action,"
@@ -240,6 +258,14 @@ public class View {
             }
         }
         System.out.println("");
+    }
+
+    public void displayProduct(Product p) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.printf("%5s %10s %10s %10s %15s %25s %15s %15s %15s\n",
+                p.getId(), p.getName(), p.getLocation(), p.getPrice(),
+                sdf.format(p.getExpiryDate()), sdf.format(p.getDateOfManufacture()), p.getCategory(),
+                p.getStorekeeper().getName(), sdf.format(p.getReceiptDate()));
     }
 
     public void sortProduct() {
@@ -256,7 +282,7 @@ public class View {
         while (true) {
             System.out.println("");
             System.out.println("LIST BEFORE SORT:");
-            pm.displayAll();
+            displayAll();
             DataInput in = new DataInput();
             System.out.println("");
             System.out.println("Press \"E\" if you want to sort by expiry date,"
@@ -270,7 +296,7 @@ public class View {
                 pm.sortByExp();
                 System.out.println("LIST AFTER SORT:");
             }
-            pm.displayAll();
+            displayAll();
             System.out.println("");
             if (!in.checkYesNo("Press \"Y\" if you want to keep taking action,"
                     + " press \"N\" if you want to end the action.")) {
@@ -282,4 +308,5 @@ public class View {
             }
         }
     }
+
 }

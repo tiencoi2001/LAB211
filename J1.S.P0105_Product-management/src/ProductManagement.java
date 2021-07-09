@@ -24,6 +24,22 @@ public class ProductManagement {
     private List<Storekeeper> storekeepers;
     private List<Product> products;
 
+    public List<Storekeeper> getStorekeepers() {
+        return storekeepers;
+    }
+
+    public void setStorekeepers(List<Storekeeper> storekeepers) {
+        this.storekeepers = storekeepers;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public ProductManagement(List<Storekeeper> storekeepers, List<Product> products) {
         this.storekeepers = storekeepers;
         this.products = products;
@@ -42,12 +58,6 @@ public class ProductManagement {
         return storekeepers;
     }
 
-    public void displayStorekeepers() {
-        for (Storekeeper s : storekeepers) {
-            System.out.println(s.getId() + " - " + s.getName());
-        }
-    }
-
     public int getLastID() {
         return storekeepers.get(storekeepers.size() - 1).getId();
     }
@@ -64,19 +74,6 @@ public class ProductManagement {
     public List<Product> addProduct(Product p) {
         products.add(p);
         return products;
-    }
-
-    public void displayAll() {
-        System.out.printf("%5s %10s %10s %10s %15s %25s %15s %15s %15s\n", "ID", "Name",
-                "Location", "Price", "Expiry date", "Date of manufacture",
-                "Category", "Storekeeper", "Receipt date");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        for (Product p : products) {
-            System.out.printf("%5s %10s %10s %10s %15s %25s %15s %15s %15s\n",
-                    p.getId(), p.getName(), p.getLocation(), p.getPrice(),
-                    sdf.format(p.getExpiryDate()), sdf.format(p.getDateOfManufacture()), p.getCategory(),
-                    p.getStorekeeper().getName(), sdf.format(p.getReceiptDate()));
-        }
     }
 
     public Storekeeper getStorekeeperByID(int id) {
@@ -106,14 +103,6 @@ public class ProductManagement {
         return null;
     }
 
-    public void displayProduct(Product p) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.printf("%5s %10s %10s %10s %15s %25s %15s %15s %15s\n",
-                p.getId(), p.getName(), p.getLocation(), p.getPrice(),
-                sdf.format(p.getExpiryDate()), sdf.format(p.getDateOfManufacture()), p.getCategory(),
-                p.getStorekeeper().getName(), sdf.format(p.getReceiptDate()));
-    }
-
     public List<Product> searchProductBySth(String searchValue) {
         List<Product> searched = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -128,7 +117,7 @@ public class ProductManagement {
         return searched;
     }
 
-    public  void sortByExp() {
+    public void sortByExp() {
         Collections.sort(products, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
@@ -137,7 +126,7 @@ public class ProductManagement {
         });
     }
 
-    public  void sortByDateOfManufacture() {
+    public void sortByDateOfManufacture() {
         Collections.sort(products, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
@@ -145,4 +134,38 @@ public class ProductManagement {
             }
         });
     }
+
+//        public void sortByExp() {
+//        Collections.sort(products, new Comparator<Product>() {
+//            @Override
+//            public int compare(Product o1, Product o2) {
+//                switch (o1.getExpiryDate().compareTo(o2.getExpiryDate())){
+//                    case 1:
+//                        return 1;
+//                    case -1:
+//                        return -1;
+//                    default:
+//                        return o1.getDateOfManufacture().compareTo(o2.getDateOfManufacture());
+//                }
+//                    
+//            }
+//        });
+//    }
+//
+//    public void sortByDateOfManufacture() {
+//        Collections.sort(products, new Comparator<Product>() {
+//            @Override
+//            public int compare(Product o1, Product o2) {
+//                switch (o1.getDateOfManufacture().compareTo(o2.getDateOfManufacture())) {
+//                    case 1:
+//                        return 1;
+//                    case -1:
+//                        return -1;
+//                    default:
+//                        return o1.getExpiryDate().compareTo(o2.getExpiryDate());
+//                }
+//
+//            }
+//        });
+//    }
 }

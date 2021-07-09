@@ -1,6 +1,8 @@
 
 import entity.Product;
 import entity.Storekeeper;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +21,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Main m = new Main();
         DataInput in = new DataInput();
 
@@ -33,11 +35,11 @@ public class Main {
         storekeepers.add(new Storekeeper(2, "a"));
         storekeepers.add(new Storekeeper(3, "b"));
         storekeepers.add(new Storekeeper(4, "c"));
-
-        products.add(new Product(1, "p1", "l1", 123, new Date("20/02/2020"), new Date("20/02/2019"), "drink", new Storekeeper(1, "abc"), new Date("20/04/2020")));
-        products.add(new Product(2, "p2", "l2", 123, new Date("19/02/2020"), new Date("02/02/2019"), "drink", new Storekeeper(2, "a"), new Date("20/06/2020")));
-        products.add(new Product(3, "p3", "l3", 123, new Date("18/02/2020"), new Date("04/02/2019"), "drink", new Storekeeper(3, "b"), new Date("20/08/2020")));
-        products.add(new Product(4, "p4", "l4", 123, new Date("17/02/2020"), new Date("06/02/2019"), "drink", new Storekeeper(4, "b"), new Date("20/10/2020")));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        products.add(new Product(1, "p1", "l1", 123, sdf.parse("20/02/2020"), sdf.parse("20/02/2019"), "drink", new Storekeeper(1, "abc"), new Date("20/04/2020")));
+        products.add(new Product(2, "p2", "l2", 123, sdf.parse("20/02/2020"), sdf.parse("19/02/2019"), "drink", new Storekeeper(2, "a"), new Date("20/06/2020")));
+        products.add(new Product(3, "p3", "l3", 123, sdf.parse("20/02/2020"), sdf.parse("23/02/2019"), "drink", new Storekeeper(3, "b"), new Date("20/08/2020")));
+        products.add(new Product(4, "p4", "l4", 123, sdf.parse("19/02/2020"), sdf.parse("06/02/2019"), "drink", new Storekeeper(4, "b"), new Date("20/10/2020")));
         boolean isStop = false;
         while (!isStop) {
             m.displayMenu();

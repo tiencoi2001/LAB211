@@ -21,27 +21,22 @@ import entity.ID;
 public class TaskManagement {
 
     private List<Task> taskList;
+    private ArrayList<ID> listID = new ArrayList<>();
 
     public TaskManagement(List<Task> task) {
         this.taskList = task;
     }
 
-    private ArrayList<ID> listID = new ArrayList<>();
+    public List<Task> getTaskList() {
+        return taskList;
+    }
 
-    public Task inputTask() {
-        DataInput in = new DataInput();
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
+    }
 
-        int id = ID();
-        String requirementName = in.inputString("Requirement Name");
-        String taskType = in.getType();
-        Date date = in.inputDate();
-        double planFrom = in.inputPlanFrom();
-        double planTo = in.inputPlanTo(planFrom);
-        String assign = in.inputString("Assignee");
-        String reviewer = in.inputString("Reviewer");
-
-        Task t = new Task(id, taskType, requirementName, date, planFrom, planTo, assign, reviewer);
-        return t;
+    public boolean checkTaskList() {
+        return taskList.isEmpty();
     }
 
     public int ID() {
@@ -64,7 +59,6 @@ public class TaskManagement {
     }
 
     public List removeId() {
-        loadId();
         for (int i = 0; i < listID.size() - 1; i++) {
             listID.remove(i);
             i--;
@@ -92,14 +86,4 @@ public class TaskManagement {
 //        }
 //        return taskList;
 //    }
-    public void display(List<Task> list) {
-        System.out.printf("%-3s | %-15s | %-10s | %-10s | %-5s | %-8s | %-7s\n",
-                "ID", "Name", "Task Type", "Date", "Time", "Assignee", "Reviewer");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        for (Task t : list) {
-            System.out.printf("%-3s | %-15s | %-10s | %-10s | %-5s | %-8s | %-7s\n",
-                    t.getId(), t.getRequirementName(), t.getTaskType(), sdf.format(t.getDate()),
-                    t.getPlanTo() - t.getPlanFrom(), t.getAssign(), t.getReviewer());
-        }
-    }
 }
