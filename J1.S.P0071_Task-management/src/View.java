@@ -58,7 +58,7 @@ public class View {
         tm.removeId();
         System.out.println("-------Del Task-------");
         while (true) {
-            if (tm.checkTaskList()) {
+            if (tm.getTaskList().isEmpty()) {
                 System.out.println("List empty! You must add task first.");
                 System.out.println("");
                 break;
@@ -82,7 +82,7 @@ public class View {
 
     public void displayTask() {
         System.out.println("-----------------------------------Task-----------------------------------");
-        if (tm.checkTaskList()) {
+        if (tm.getTaskList().isEmpty()) {
             System.out.println("List empty! You must add task first.");
             System.out.println("");
             return;

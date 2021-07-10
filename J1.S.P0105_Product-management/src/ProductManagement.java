@@ -45,14 +45,6 @@ public class ProductManagement {
         this.products = products;
     }
 
-    public boolean checkListStorekeeper() {
-        return storekeepers.isEmpty();
-    }
-
-    public boolean checkListProduct() {
-        return products.isEmpty();
-    }
-
     public List<Storekeeper> addStorekeeper(Storekeeper s) {
         storekeepers.add(s);
         return storekeepers;

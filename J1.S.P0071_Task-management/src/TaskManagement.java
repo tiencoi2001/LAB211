@@ -35,10 +35,6 @@ public class TaskManagement {
         this.taskList = taskList;
     }
 
-    public boolean checkTaskList() {
-        return taskList.isEmpty();
-    }
-
     public int ID() {
         if (taskList.isEmpty()) {
             listID.add(new ID(1));

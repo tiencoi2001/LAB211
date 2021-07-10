@@ -52,7 +52,7 @@ public class View {
         DataInput in = new DataInput();
 
         int id;
-        if (pm.checkListStorekeeper()) {
+        if (pm.getStorekeepers().isEmpty()) {
             id = 1;
         } else {
             id = pm.getLastID() + 1;
@@ -70,7 +70,7 @@ public class View {
     }
 
     public void addProduct() {
-        if (pm.checkListStorekeeper()) {
+        if (pm.getStorekeepers().isEmpty()) {
             System.out.println("Please enter the storekeeper first.");
             System.out.println("");
             return;
@@ -142,12 +142,12 @@ public class View {
 
     public void updateProduct() {
         Scanner sc = new Scanner(System.in);
-        if (pm.checkListStorekeeper()) {
+        if (pm.getStorekeepers().isEmpty()) {
             System.out.println("Please enter the storekeeper first.");
             System.out.println("");
             return;
         }
-        if (pm.checkListProduct()) {
+        if (pm.getProducts().isEmpty()) {
             System.out.println("Please enter the product first.");
             System.out.println("");
             return;
@@ -221,12 +221,12 @@ public class View {
     }
 
     public void searchProduct() {
-        if (pm.checkListStorekeeper()) {
+        if (pm.getStorekeepers().isEmpty()) {
             System.out.println("Please enter the storekeeper first.");
             System.out.println("");
             return;
         }
-        if (pm.checkListProduct()) {
+        if (pm.getProducts().isEmpty()) {
             System.out.println("Please enter the product first.");
             System.out.println("");
             return;
@@ -269,12 +269,12 @@ public class View {
     }
 
     public void sortProduct() {
-        if (pm.checkListStorekeeper()) {
+        if (pm.getStorekeepers().isEmpty()) {
             System.out.println("Please enter the storekeeper first.");
             System.out.println("");
             return;
         }
-        if (pm.checkListProduct()) {
+        if (pm.getStorekeepers().isEmpty()) {
             System.out.println("Please enter the product first.");
             System.out.println("");
             return;
