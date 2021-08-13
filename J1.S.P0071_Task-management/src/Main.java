@@ -27,11 +27,11 @@ public class Main {
         View v = new View(tm);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-//        task.add(new Task(1, "Code", "Dev Program", sdf.parse("06/06/2020"), 8, 15, "Dev", "Lead"));
-//        task.add(new Task(2, "Test", "Test Program", sdf.parse("07/06/2020"), 9, 15.5, "Dev", "Lead"));        
-//        task.add(new Task(3, "Design", "Design Program", sdf.parse("10/06/2020"), 10.5, 17.5, "Dev", "Lead"));        
-//        task.add(new Task(4, "Review", "Review Program", sdf.parse("13/06/2020"), 9.5, 12, "Dev", "Lead"));       
-//        task.add(new Task(5, "Code", "Coder", sdf.parse("13/06/2020"), 9.5, 16, "Coder", "Lead"));        
+        task.add(new Task(1, "Code", "Dev Program", sdf.parse("06/06/2020"), 8, 15, "Dev", "Lead"));
+        task.add(new Task(2, "Test", "Test Program", sdf.parse("07/06/2020"), 9, 15.5, "Dev", "Lead"));        
+        task.add(new Task(3, "Design", "Design Program", sdf.parse("10/06/2020"), 10.5, 17.5, "Dev", "Lead"));        
+        task.add(new Task(4, "Review", "Review Program", sdf.parse("13/06/2020"), 9.5, 12, "Dev", "Lead"));       
+        task.add(new Task(5, "Code", "Coder", sdf.parse("13/06/2020"), 9.5, 16, "Coder", "Lead"));        
         boolean isStop = false;
         while (!isStop) {
             m.displayMenu();

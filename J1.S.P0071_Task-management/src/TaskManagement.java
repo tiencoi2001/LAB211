@@ -1,12 +1,7 @@
 
 import entity.Task;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Scanner;
-import java.util.TreeSet;
 import entity.ID;
 
 /*
@@ -31,12 +26,8 @@ public class TaskManagement {
         return taskList;
     }
 
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
-    }
-
     public int ID() {
-        if (taskList.isEmpty()) {
+        if (taskList.isEmpty() && listID.isEmpty()) {
             listID.add(new ID(1));
             return 1;
         }
@@ -62,24 +53,15 @@ public class TaskManagement {
         return listID;
     }
 
-    public List<Task> addTask(Task task) {
+    public void addTask(Task task) {
         taskList.add(task);
-        return taskList;
     }
 
-    public List<Task> deleteTask(int id) {
+    public void deleteTask(int id) {
         for (int i = 0; i < taskList.size(); i++) {
             if (taskList.get(i).getId() == id) {
                 taskList.remove(i);
             }
         }
-        return taskList;
     }
-
-//    public List<Task> setNewID() {
-//        for (int i = 0; i < taskList.size(); i++) {
-//            taskList.get(i).setId(i + 1);
-//        }
-//        return taskList;
-//    }
 }

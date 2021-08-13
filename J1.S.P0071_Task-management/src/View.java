@@ -43,7 +43,7 @@ public class View {
             tm.removeId();
             Task t = inputTask();
             tm.addTask(t);
-            System.out.println("Add product successful.");
+            System.out.println("Add task successful.");
             System.out.println("");
             if (!in.checkYesNo()) {
                 break;
@@ -67,12 +67,11 @@ public class View {
             display();
             int id = in.inputExistedID(tm.getTaskList());
             tm.deleteTask(id);
-            System.out.println("Remove employee successful.");
+            System.out.println("Remove task successful.");
             System.out.println("");
             System.out.println("List after deteled");
             display();
             if (!in.checkYesNo()) {
-//                            tm.setNewID();
                 break;
             } else {
                 continue;
