@@ -16,6 +16,7 @@ public class Main {
         Matrix m = new Matrix();
         int[][] matrix1;
         int[][] matrix2;
+        int[][] matrixResult;
 
         boolean isStop = false;
         while (!isStop) {
@@ -28,9 +29,11 @@ public class Main {
                     System.out.println("");
                     matrix2 = m.inputMatrix(2);
                     System.out.println("--------Result--------");
+                    
+                    matrixResult = m.additionMatrix(matrix1, matrix2);
 
-                    if (matrix1.length != matrix2.length || matrix1[0].length != matrix2[0].length) {
-                        System.err.println("Can't Addition Matrix");
+                    if (matrixResult == null) {
+                        System.out.println("Can't Addition Matrix");
                         break;
                     }
 
@@ -38,7 +41,7 @@ public class Main {
                     System.out.println("+");
                     m.displayMatrix(matrix2);
                     System.out.println("=");
-                    m.displayMatrix(m.additionMatrix(matrix1, matrix2));
+                    m.displayMatrix(matrixResult);
                     break;
                 }
                 case 2: {
@@ -47,9 +50,11 @@ public class Main {
                     System.out.println("");
                     matrix2 = m.inputMatrix(2);
                     System.out.println("--------Result--------");
+                    
+                    matrixResult = m.subtractionMatrix(matrix1, matrix2);
 
-                    if (matrix1.length != matrix2.length || matrix1[0].length != matrix2[0].length) {
-                        System.err.println("Can't Subtraction Matrix");
+                    if (matrixResult == null) {
+                        System.out.println("Can't Subtraction Matrix");
                         break;
                     }
 
@@ -57,7 +62,7 @@ public class Main {
                     System.out.println("-");
                     m.displayMatrix(matrix2);
                     System.out.println("=");
-                    m.displayMatrix(m.subtractionMatrix(matrix1, matrix2));
+                    m.displayMatrix(matrixResult);
                     break;
                 }
                 case 3: {
@@ -66,9 +71,11 @@ public class Main {
                     System.out.println("");
                     matrix2 = m.inputMatrix(2);
                     System.out.println("--------Result--------");
+                    
+                    matrixResult = m.multiplicationMatrix(matrix1, matrix2);
 
-                    if (matrix1[0].length != matrix2.length) {
-                        System.err.println("Can't Multiplication Matrix");
+                    if (matrixResult == null) {
+                        System.out.println("Can't Multiplication Matrix");
                         break;
                     }
 
@@ -76,7 +83,7 @@ public class Main {
                     System.out.println("*");
                     m.displayMatrix(matrix2);
                     System.out.println("=");
-                    m.displayMatrix(m.multiplicationMatrix(matrix1, matrix2));
+                    m.displayMatrix(matrixResult);
                     break;
                 }
                 case 4: {

@@ -60,10 +60,10 @@ public class DataInput {
                 if (Integer.parseInt(raw) == Integer.parseInt(raw) && num > 0) {
                     return num;
                 } else {
-                    System.out.print("Size of matrix must bigger 0, enter again: ");
+                    System.out.print("Size of matrix must greater 0, enter again: ");
                 }
             } catch (Exception e) {
-                System.out.print("Size of matrix must bigger 0, enter again: ");
+                System.out.print("Size of matrix must greater 0, enter again: ");
             }
         }
     }

@@ -44,6 +44,10 @@ public class Matrix {
     }
 
     public int[][] additionMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1.length != matrix2.length || matrix1[0].length != matrix2[0].length) {
+            return null;
+        }
+
         int row = matrix1.length;
         int col = matrix1[0].length;
         int[][] matrixResult = new int[row][col];
@@ -56,6 +60,10 @@ public class Matrix {
     }
 
     public int[][] subtractionMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1.length != matrix2.length || matrix1[0].length != matrix2[0].length) {
+            return null;
+        }
+
         int row = matrix1.length;
         int col = matrix1[0].length;
         int[][] matrixResult = new int[row][col];
@@ -68,6 +76,10 @@ public class Matrix {
     }
 
     public int[][] multiplicationMatrix(int[][] matrix1, int[][] matrix2) {
+        if (matrix1[0].length != matrix2.length) {
+            return null;
+        }
+
         int row1 = matrix1.length;
         int col1 = matrix1[0].length;
         int col2 = matrix2[0].length;
