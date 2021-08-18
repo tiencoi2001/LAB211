@@ -238,7 +238,7 @@ public class DataInput {
                             return date;
                         } else {
                             System.out.println("Receipt date must "
-                                    + "after manufacture date and before expiry date");
+                                    + "after manufacture date and before expiry date, enter again: ");
                         }
                     } else {
                         System.out.print("Please enter a right date, enter again: ");

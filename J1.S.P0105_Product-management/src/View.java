@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 /**
  *
- * @author Vu Duc Tien
+ * @author Vu Duc Tien 
  */
 public class View {
 
@@ -78,7 +78,7 @@ public class View {
         DataInput in = new DataInput();
         while (true) {
             Product p = inputProduct();
-            ArrayList<Product> products = (ArrayList<Product>) pm.addProduct(p);
+            pm.addProduct(p);
             System.out.println("Add product successful.");
             System.out.println("");
             System.out.println("LIST PRODUCTS");

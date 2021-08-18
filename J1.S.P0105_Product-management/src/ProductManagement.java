@@ -27,17 +27,9 @@ public class ProductManagement {
     public List<Storekeeper> getStorekeepers() {
         return storekeepers;
     }
-
-    public void setStorekeepers(List<Storekeeper> storekeepers) {
-        this.storekeepers = storekeepers;
-    }
-
+    
     public List<Product> getProducts() {
         return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public ProductManagement(List<Storekeeper> storekeepers, List<Product> products) {
@@ -45,9 +37,8 @@ public class ProductManagement {
         this.products = products;
     }
 
-    public List<Storekeeper> addStorekeeper(Storekeeper s) {
+    public void addStorekeeper(Storekeeper s) {
         storekeepers.add(s);
-        return storekeepers;
     }
 
     public int getLastID() {
@@ -63,9 +54,8 @@ public class ProductManagement {
         return false;
     }
 
-    public List<Product> addProduct(Product p) {
+    public void addProduct(Product p) {
         products.add(p);
-        return products;
     }
 
     public Storekeeper getStorekeeperByID(int id) {
