@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Vu Duc Tien
+ * @author Hoang Tran
  */
 public class Employee {
 

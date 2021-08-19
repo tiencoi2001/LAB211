@@ -2,6 +2,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import entity.Employee;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /*
@@ -11,20 +13,22 @@ import java.util.Date;
  */
 /**
  *
- * @author Vu Duc Tien
+ * @author Hoang Tran
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Main m = new Main();
         DataInput in = new DataInput();
         List<Employee> employee = new ArrayList<>();
         EmployeeManagement em = new EmployeeManagement(employee);
+        View v = new View(em);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        employee.add(new Employee("1", "a", "a", "+125712352422", "a123@gmail.com", "a", new Date("01/02/2001"), "male", 1241, "a"));
-        employee.add(new Employee("2", "b", "b", "+127132523423", "bhe124@fpt.edu.vn", "b", new Date("01/04/2001"), "female", 121, "b"));
-        employee.add(new Employee("3", "c", "c", "+235875241645", "c712@yahoo.vn", "c", new Date("16/01/2001"), "male", 232, "c"));
-        employee.add(new Employee("4", "d", "d", "+235236124235", "dkjags@gmail.com", "d", new Date("13/01/2001"), "female", 346, "d"));
+        employee.add(new Employee("1", "tran", "hoang", "+125712352422", "a123@gmail.com", "a", sdf.parse("01/02/2001"), "male", 1241, "a"));
+        employee.add(new Employee("2", "b", "b", "+127132523423", "bhe124@fpt.edu.vn", "b", sdf.parse("01/04/2001"), "female", 121, "b"));
+        employee.add(new Employee("3", "c", "c", "+235875241645", "c712@yahoo.vn", "c", sdf.parse("16/01/2001"), "male", 232, "c"));
+        employee.add(new Employee("4", "d", "d", "+235236124235", "dkjags@gmail.com", "d", sdf.parse("13/01/2001"), "female", 346, "d"));
 
         boolean isStop = false;
         while (!isStop) {
@@ -32,23 +36,23 @@ public class Main {
             int choice = in.inputChoice(1, 6);
             switch (choice) {
                 case 1: {
-                    em.addEmployee();
+                    v.addEmployee();
                     break;
                 }
                 case 2: {
-                    em.updateEmployee();
+                    v.updateEmployee();
                     break;
                 }
                 case 3: {
-                    em.removeEmployee();
+                    v.removeEmployee();
                     break;
                 }
                 case 4: {
-                    em.searchEmployee();
+                    v.searchEmployee();
                     break;
                 }
                 case 5: {
-                    em.sortBySalary();
+                    v.sortBySalary();
                     break;
                 }
                 case 6: {

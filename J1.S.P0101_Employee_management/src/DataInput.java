@@ -4,6 +4,9 @@ import java.util.Scanner;
 import entity.Employee;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -14,7 +17,7 @@ import java.util.regex.Pattern;
  */
 /**
  *
- * @author Vu Duc Tien
+ * @author Hoang Tran
  */
 public class DataInput {
 
@@ -154,18 +157,12 @@ public class DataInput {
     }
 
     private String upperCaseFirstChar(String stringInput) {
-        if (stringInput.isEmpty()) {
-            return null;
-        }
         String[] strA = stringInput.replaceAll("\\s+", " ").trim().split(" ");
         if (stringInput.replaceAll(" ", "").isEmpty()) {
             return null;
         }
         String tmp = "";
         String result = "";
-        for (String string : strA) {
-
-        }
         for (String s : strA) {
             s = s.toLowerCase();
             if (s.length() == 1) {
@@ -195,9 +192,9 @@ public class DataInput {
     }
 
     private boolean checkPhone(String stringPhone) {
-        Pattern p = Pattern.compile("^[0-9]{11,20}$");
+        Pattern p = Pattern.compile("^[0-9]{9,20}$");
         String s = stringPhone.substring(1);
-        if (stringPhone.charAt(0) == '+') {
+        if (stringPhone.charAt(0) == '0') {
             if (s.isEmpty()) {
                 System.out.print("Phone number can not empty, enter again: ");
                 return false;
@@ -205,11 +202,11 @@ public class DataInput {
             if (p.matcher(s).find()) {
                 return true;
             } else {
-                System.out.print("Phone must a string of numbers and has 11-20 digits, enter again: ");
+                System.out.print("Phone must a string of numbers and has 10-20 digits, enter again: ");
                 return false;
             }
         } else {
-            System.out.print("Phone number must start by '+', enter again: ");
+            System.out.print("Phone number must start by '0', enter again: ");
             return false;
         }
     }
@@ -276,6 +273,36 @@ public class DataInput {
             } else { // empty string ~> display error & re-enter
                 System.out.print("Date of birth can not empty, enter again: ");
             }
+        }
+    }
+
+    public boolean checkAge(Date day) {
+        Calendar now = Calendar.getInstance();
+        Calendar dob = Calendar.getInstance();
+        dob.setTime(day);
+        if (dob.after(now)) {
+            System.out.println("Can't be born in the future");
+            return false;
+        }
+        int year1 = now.get(Calendar.YEAR);
+        int year2 = dob.get(Calendar.YEAR);
+        int age = year1 - year2;
+        int month1 = now.get(Calendar.MONTH);
+        int month2 = dob.get(Calendar.MONTH);
+        if (month2 > month1) {
+            age--;
+        } else if (month1 == month2) {
+            int day1 = now.get(Calendar.DAY_OF_MONTH);
+            int day2 = dob.get(Calendar.DAY_OF_MONTH);
+            if (day2 > day1) {
+                age--;
+            }
+        }
+        if (age > 18) {
+            return true;
+        } else {
+            System.out.println("You are under 18 years old.");
+            return false;
         }
     }
 
