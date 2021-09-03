@@ -21,7 +21,7 @@ public class EBank {
     }
 
     public void setLocale(Locale locale) {
-        rb = ResourceBundle.getBundle("Language/" + locale);
+        rb = ResourceBundle.getBundle("Language/lang", locale);
     }
 
 

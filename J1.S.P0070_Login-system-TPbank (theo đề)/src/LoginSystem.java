@@ -70,11 +70,11 @@ public class LoginSystem {
         if(choice==1){
             locate = new Locale("vi");
             eBank.setLocale(locate);
-            this.rb = ResourceBundle.getBundle("language/" + locate);
+            this.rb = ResourceBundle.getBundle("language/lang", locate);
         }else if(choice == 2){
             locate = new Locale("en");
             eBank.setLocale(locate);
-            this.rb = ResourceBundle.getBundle("language/" + locate);
+            this.rb = ResourceBundle.getBundle("language/lang", locate);
         }
     }
 
