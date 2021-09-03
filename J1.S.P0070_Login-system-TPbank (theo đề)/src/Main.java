@@ -1,11 +1,6 @@
 
 import entity.Users;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
