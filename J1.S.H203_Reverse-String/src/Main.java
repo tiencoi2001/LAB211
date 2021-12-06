@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,21 +9,19 @@
 
 /**
  *
- * @author Hoang Tran
+ * @author duy
  */
 public class Main {
 
     public static void main(String[] args) {
-        while (true) {
-            DataInput in = new DataInput();
-            String str = in.inputString();
+        Scanner sc = new Scanner(System.in);
+        DataInput in = new DataInput();
+        System.out.println("Enter string:");
+        String str = sc.nextLine();
+
+        if (!str.trim().isEmpty()) {
             System.out.print("String after reverse: ");
             in.printReverse(str);
-            if(!in.checkYesNo("Do you want to reverse another string?")){
-                break;
-            }else{
-                continue;
-            }
         }
     }
 }
