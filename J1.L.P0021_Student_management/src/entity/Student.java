@@ -7,7 +7,7 @@ package entity;
 
 /**
  *
- * @author duy
+ * @author Vu Duc Tien
  */
 public class Student {
     String id;

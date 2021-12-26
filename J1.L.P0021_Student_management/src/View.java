@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 /**
  *
- * @author duy
+ * @author Vu Duc Tien
  */
 public class View {
 

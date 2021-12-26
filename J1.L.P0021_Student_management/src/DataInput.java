@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 /**
  *
- * @author duy
+ * @author Vu Duc Tien
  */
 public class DataInput {
 

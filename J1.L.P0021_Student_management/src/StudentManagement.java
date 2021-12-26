@@ -14,7 +14,7 @@ import java.util.List;
  */
 /**
  *
- * @author duy
+ * @author Vu Duc Tien
  */
 public class StudentManagement {
 

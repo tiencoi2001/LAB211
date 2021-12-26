@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author duy
+ * @author Vu Duc Tien
  */
 public class Main {
     public static void main(String[] args) {
